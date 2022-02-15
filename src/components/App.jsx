@@ -8,7 +8,7 @@ function App() {
 
   function handleOnChange(event) {
     // captuure the value & name of input
-    const [value, name] = event.target;
+    const { value, name } = event.target;
     //update the value
     // make it set a function
     //prevValue = previous value of state
