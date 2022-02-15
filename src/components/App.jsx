@@ -12,11 +12,22 @@ function App() {
     // capture the name of input
     const inputName = event.target.name;
     //update the value
-    if (inputName === "fName") {
-      setFullName({ fName: newValue });
-    } else {
-      setFullName({ lName: newValue });
-    }
+    // make it set a function
+    //prevValue = previous value of state
+    setFullName((prevValue) => {
+      if (inputName === "fName") {
+        // return an object and capture prev value
+        return {
+          fName: newValue,
+          lName: prevValue.lName
+        };
+      } else if (inputName === "lName") {
+        return {
+          fName: prevValue.fName,
+          lName: newValue
+        };
+      }
+    });
   }
 
   return (
@@ -29,13 +40,13 @@ function App() {
           name="fName"
           onChange={handleOnChange}
           placeholder="First Name"
-          //value={fullName.fName}
+          value={fullName.fName}
         />
         <input
           name="lName"
           onChange={handleOnChange}
           placeholder="Last Name"
-          //value={fullName.lName}
+          value={fullName.lName}
         />
         <button>Submit</button>
       </form>
