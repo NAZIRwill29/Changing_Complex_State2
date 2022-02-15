@@ -7,24 +7,22 @@ function App() {
   });
 
   function handleOnChange(event) {
-    // captuure the value
-    const newValue = event.target.value;
-    // capture the name of input
-    const inputName = event.target.name;
+    // captuure the value & name of input
+    const [value, name] = event.target;
     //update the value
     // make it set a function
     //prevValue = previous value of state
     setFullName((prevValue) => {
-      if (inputName === "fName") {
+      if (name === "fName") {
         // return an object and capture prev value
         return {
-          fName: newValue,
+          fName: value,
           lName: prevValue.lName
         };
-      } else if (inputName === "lName") {
+      } else if (name === "lName") {
         return {
           fName: prevValue.fName,
-          lName: newValue
+          lName: value
         };
       }
     });
